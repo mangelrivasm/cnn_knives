@@ -1,5 +1,5 @@
 # cnn_knives
-instalar librerias adicionales:
+\ninstalar librerias adicionales:
 pip install tensorflow
 pip install keras
 pip install OpenCV
