@@ -102,5 +102,3 @@ if not os.path.exists(dir):
 
 model.save('./modelo/modelo.h5')
 model.save_weights('./modelo/pesos.h5')
-
-
