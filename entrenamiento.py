@@ -18,12 +18,12 @@ data = []
 labels = []
 batchSize = 32
 
-# def loadDataSet():
 
 
 
 
-imageP = paths.list_images("./data/entrenamiento/Knives")
+
+imageP = paths.list_images("./data1/entrenamiento/Knives")
 for i in imageP:
 
     image = cv2.imread(i)
@@ -34,7 +34,7 @@ for i in imageP:
     labels.append(1)
 
 
-imageP = paths.list_images("./data/entrenamiento/No_Knives")
+imageP = paths.list_images("./data1/entrenamiento/No_Knives")
 for i in imageP:
 
     image = cv2.imread(i)
@@ -56,13 +56,6 @@ trainY = to_categorical(trainY, num_classes=2)
 testY = to_categorical(testY, num_classes=2)
 
 
-# print('as')
-# print(trainX)
-# print(testX)
-# print(trainY)
-# print(testY)
-
-# datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
 datagen = ImageDataGenerator(rotation_range=30, width_shift_range=0.1,
 	height_shift_range=0.1, shear_range=0.2, zoom_range=0.2,
 	horizontal_flip=True, fill_mode="nearest")
@@ -84,12 +77,12 @@ model.add(Dense(128,activation='relu', kernel_initializer='he_uniform'))
 
 model.add(Dropout(0.4))
 
-model.add(Dense(2,activation='softmax'))
+model.add(Dense(2,activation='sigmoid'))
 
 
 
-# opt = SGD(lr=1e-3, momentum=0.9)
-opt = Adam(lr=1e-3, decay=1e-3 / 20)
+opt = SGD(lr=1e-3, momentum=0.9)
+# opt = Adam(lr=1e-3, decay=1e-3 / 20)
 # opt = Adam(lr=1e-3, decay=0.9)
 
 model.compile(loss='binary_crossentropy', optimizer=opt , metrics=['accuracy'])
