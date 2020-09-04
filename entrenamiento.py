@@ -75,6 +75,8 @@ model.add(Conv2D(32, (3,3), padding='same', kernel_initializer='he_uniform', inp
 model.add(MaxPooling2D((2, 2)))
 model.add(Conv2D(64, (2,2), padding='same', kernel_initializer='he_uniform' ,activation='relu'))
 model.add(MaxPooling2D((2, 2)))
+model.add(Conv2D(128, (2,2), padding='same', kernel_initializer='he_uniform' ,activation='relu'))
+model.add(MaxPooling2D((2, 2)))
 
 model.add(Flatten())
 
@@ -96,6 +98,7 @@ model.compile(loss='binary_crossentropy', optimizer=opt , metrics=['accuracy'])
 model.fit_generator(it_train, steps_per_epoch=len(trainX)//batchSize, epochs=20,
           validation_data=(testX,testY), verbose=1)
 
+print(model.summary())
 dir = './modelo/'
 if not os.path.exists(dir):
     os.mkdir(dir)
